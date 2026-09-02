@@ -1,0 +1,11 @@
+title: Jwayong EDA Lab
+description: Semiconductor Design, EDA, Static Timing Analysis, Logic Implementation, Timing Closure and AI Engineering.
+url: "https://jwayong-park.github.io"
+baseurl: "/eda-technical-blog"
+lang: ko-KR
+markdown: kramdown
+permalink: /posts/:title.html
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
