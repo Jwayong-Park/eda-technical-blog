@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<header class="hero article-hero">
+  <div class="container">
+    <p class="eyebrow">{{ page.category | default: 'EDA TECHNICAL BLOG' | upcase }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="lead">{{ page.subtitle }}</p>{% endif %}
+    {% if page.description %}<p class="hero-copy">{{ page.description }}</p>{% endif %}
+  </div>
+</header>
+
+<main class="container article">
+  <div class="article-header">
+    {% if page.tags %}<p class="tag">{{ page.tags | join: ' · ' | upcase }}</p>{% endif %}
+    <p class="post-meta">{{ page.date | date: "%Y-%m-%d" }}</p>
+  </div>
+
+  <article class="article-body">
+    {{ content }}
+    <p><a class="button" href="{{ '/' | relative_url }}">← Back to EDA Lab</a></p>
+  </article>
+</main>
