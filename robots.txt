@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jwayong-park.github.io/eda-technical-blog/sitemap.xml
