@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+<title id="title">AI ML DL LLM relationship</title><desc id="desc">Nested ellipses showing Artificial Intelligence, Machine Learning, Deep Learning and Large Language Model.</desc>
+<defs><style>.t{font:700 24px sans-serif;fill:#172033}.s{font:500 15px sans-serif;fill:#52627a}</style></defs>
+<rect x="10" y="10" width="880" height="540" rx="22" fill="#fbfdff" stroke="#dce6ef"/>
+<ellipse cx="450" cy="285" rx="390" ry="225" fill="#edf6ff" stroke="#74ace1" stroke-width="2"/>
+<ellipse cx="450" cy="292" rx="320" ry="180" fill="#eff9f1" stroke="#78bd8b" stroke-width="2"/>
+<ellipse cx="450" cy="300" rx="245" ry="135" fill="#fff8e8" stroke="#e6b45d" stroke-width="2"/>
+<ellipse cx="450" cy="312" rx="165" ry="86" fill="#fff0f0" stroke="#dc7b7b" stroke-width="2"/>
+<text x="450" y="100" text-anchor="middle" class="t">인공지능 (AI)</text><text x="450" y="124" text-anchor="middle" class="s">사람의 지적 작업을 기계가 수행하게 하는 가장 넓은 개념</text>
+<text x="450" y="178" text-anchor="middle" class="t">머신러닝 (ML)</text><text x="450" y="202" text-anchor="middle" class="s">규칙을 사람이 쓰지 않고 데이터에서 패턴을 학습</text>
+<text x="450" y="253" text-anchor="middle" class="t">딥러닝 (DL)</text><text x="450" y="277" text-anchor="middle" class="s">여러 층의 Neural Network로 복잡한 패턴을 학습</text>
+<text x="450" y="312" text-anchor="middle" class="t">대규모 언어 모델 (LLM)</text><text x="450" y="337" text-anchor="middle" class="s">대규모 텍스트에서 다음 Token을 예측하는 모델</text>
+<text x="450" y="475" text-anchor="middle" class="t">AI ⊃ ML ⊃ DL ⊃ LLM</text>
+<text x="450" y="505" text-anchor="middle" class="s">포함 관계로 이해하면 각 용어의 범위를 한눈에 볼 수 있다.</text>
+</svg>
