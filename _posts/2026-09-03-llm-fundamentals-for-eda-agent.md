@@ -24,7 +24,7 @@ EDA 분야에서 **AI Agent**를 이야기할 때 가장 먼저 떠오르는 질
 
 가능성을 이야기하기 전에 먼저 알아야 할 것이 있다. **LLM이 무엇을 학습하고, 어떻게 답을 만들며, 왜 틀릴 수 있는가**이다.
 
-이 글은 발표 자료 **「LLM 신경망(Neural Network) 학습부터 추론 원리, 그리고 실무 적용 솔루션」**을 바탕으로, 이후 EDA Agent와 AI 기반 Design/Implementation Flow를 이해하기 위해 필요한 AI 기초를 하나의 기술 문서로 정리한 것이다. fileciteturn38file0L28-L32
+이 글은 발표 자료 **「LLM 신경망(Neural Network) 학습부터 추론 원리, 그리고 실무 적용 솔루션」**을 바탕으로, 이후 EDA Agent와 AI 기반 Design/Implementation Flow를 이해하기 위해 필요한 AI 기초를 하나의 기술 문서로 정리한 것이다.
 
 핵심 흐름은 다음과 같다.
 
@@ -42,6 +42,11 @@ AI Agent
 EDA Agent
 ```
 
+<figure class="article-figure article-figure-overview">
+  <img src="{{ '/assets/images/llm-fundamentals-overview.svg' | relative_url }}" alt="LLM Fundamentals에서 AI Agent와 EDA Agent로 확장되는 개념 구조도" loading="lazy">
+  <figcaption>Figure 1. AI · ML · DL · LLM의 관계부터 AI Agent와 EDA Agent로 이어지는 전체 개념 구조</figcaption>
+</figure>
+
 ---
 
 ## 1. 왜 EDA Agent를 이야기하기 전에 LLM을 알아야 하는가?
@@ -52,7 +57,7 @@ AI Transformation(AX)은 단순히 AI Tool을 사용하는 문제가 아니다. 
 
 1. **소통과 의사결정** — 기본 용어와 동작 메커니즘을 알아야 업계와 벤더, 개발자와 제대로 소통할 수 있다.
 2. **프롬프트 그 이상** — 학습과 추론 과정을 이해해야 AI 도구와 Pipeline을 설계할 수 있다.
-3. **해결책 선택** — 같은 문제라도 Prompt, RAG, Fine-Tuning 중 적절한 선택이 달라진다. fileciteturn38file0L96-L117
+3. **해결책 선택** — 같은 문제라도 Prompt, RAG, Fine-Tuning 중 적절한 선택이 달라진다.
 
 EDA Agent도 똑같다.
 
@@ -91,7 +96,7 @@ Artificial Intelligence
 
 ### LLM — Large Language Model
 
-대규모 텍스트를 학습해 언어의 패턴을 모델링하고, 주어진 문맥에서 다음 Token을 예측하는 초대형 Deep Learning 모델이다. fileciteturn38file0L129-L148
+대규모 텍스트를 학습해 언어의 패턴을 모델링하고, 주어진 문맥에서 다음 Token을 예측하는 초대형 Deep Learning 모델이다.
 
 이 관계를 이해하면 LLM을 단순한 "검색 엔진"이나 "대화 프로그램"으로 생각하는 오류를 줄일 수 있다.
 
@@ -119,9 +124,7 @@ Output
 
 중요한 것은 개별 뉴런 하나가 아니라 **수많은 연결과 가중치가 함께 학습된다는 것**이다.
 
-LLM에서는 이러한 파라미터가 매우 큰 규모로 존재한다. 발표 자료에서는 GPT급 모델의 파라미터를 수천억 개 규모로 설명한다. fileciteturn38file0L160-L218
-
-따라서 LLM의 "지능"을 이해할 때는 특정 뉴런 하나보다 **모델 구조, 연결 규모, 그리고 학습된 Weight**를 보는 것이 중요하다.
+LLM에서는 이러한 파라미터가 매우 큰 규모로 존재한다. 따라서 LLM의 "지능"을 이해할 때는 특정 뉴런 하나보다 **모델 구조, 연결 규모, 그리고 학습된 Weight**를 보는 것이 중요하다.
 
 ---
 
@@ -166,7 +169,7 @@ w ← w − η · ∂L/∂w
 - `∂L/∂w` : Weight에 대한 Loss의 Gradient
 - `η` : Learning Rate
 
-Gradient가 양수이면 Weight를 줄이는 방향으로, 음수이면 Weight를 늘리는 방향으로 이동한다. Gradient가 거의 0이면 해당 지점에서 더 이상 크게 개선할 방향이 없다고 볼 수 있다. fileciteturn38file0L270-L294
+Gradient가 양수이면 Weight를 줄이는 방향으로, 음수이면 Weight를 늘리는 방향으로 이동한다. Gradient가 거의 0이면 해당 지점에서 더 이상 크게 개선할 방향이 없다고 볼 수 있다.
 
 ### 4.3 Backpropagation
 
@@ -194,7 +197,7 @@ LLM은 텍스트를 Token으로 나누고, 이를 숫자 벡터로 변환해 계
 [인공] [지능] [이]
 ```
 
-한국어는 같은 의미를 전달하더라도 영어와 비교해 Token이 더 많이 발생할 수 있기 때문에 Token 수가 비용과 직접 연결될 수 있다. fileciteturn38file0L306-L336
+한국어는 같은 의미를 전달하더라도 영어와 비교해 Token이 더 많이 발생할 수 있기 때문에 Token 수가 비용과 직접 연결될 수 있다.
 
 ### Embedding
 
@@ -244,7 +247,7 @@ Next Token Probability
 
 라는 문장에서 `은행`을 해석할 때 `강`과 같은 주변 단어가 문맥 이해에 영향을 줄 수 있다.
 
-발표 자료는 이 구조의 출발점으로 Vaswani et al.의 **Attention Is All You Need**를 소개한다. fileciteturn38file0L348-L379
+발표 자료는 이 구조의 출발점으로 Vaswani et al.의 **Attention Is All You Need**를 소개한다.
 
 ---
 
@@ -252,7 +255,7 @@ Next Token Probability
 
 LLM을 만든다고 해서 처음부터 질문에 잘 답하는 것은 아니다.
 
-발표 자료에서는 모델 학습을 크게 **Pre-training → Post-training**으로 나누어 설명한다. fileciteturn38file0L401-L429
+발표 자료에서는 모델 학습을 크게 **Pre-training → Post-training**으로 나누어 설명한다.
 
 ### 7.1 Pre-training
 
@@ -272,7 +275,7 @@ Transformer × N
 Base Model
 ```
 
-정답지를 사람이 하나씩 만드는 대신 원래 문장 자체를 학습 신호로 사용할 수 있다는 점이 대규모 학습의 중요한 특징이다. fileciteturn38file0L441-L463
+정답지를 사람이 하나씩 만드는 대신 원래 문장 자체를 학습 신호로 사용할 수 있다는 점이 대규모 학습의 중요한 특징이다.
 
 결과물은 **Base Model**이다.
 
@@ -294,7 +297,7 @@ Preference Alignment / RLHF
 Aligned Chat Model
 ```
 
-SFT는 지시를 따르는 형식을 학습시키고, RLHF와 같은 선호도 기반 정렬은 사람이 선호하는 답변의 특성을 반영한다. fileciteturn38file0L523-L539
+SFT는 지시를 따르는 형식을 학습시키고, RLHF와 같은 선호도 기반 정렬은 사람이 선호하는 답변의 특성을 반영한다.
 
 즉,
 
@@ -326,7 +329,7 @@ SFT는 지시를 따르는 형식을 학습시키고, RLHF와 같은 선호도 �
 
 처럼 이미 생성한 Token을 다시 입력에 포함시키면서 다음 Token을 하나씩 생성한다.
 
-이를 자기회귀(Autoregressive) 방식이라고 볼 수 있다. 발표 자료의 핵심 표현은 **"LLM은 답을 찾는 것이 아니라 한 Token씩 생성한다"**는 것이다. fileciteturn38file0L607-L637
+이를 자기회귀(Autoregressive) 방식이라고 볼 수 있다. 핵심은 **"LLM은 답을 찾는 것이 아니라 한 Token씩 생성한다"**는 것이다.
 
 이 관점이 중요한 이유는 다음 장에서 설명할 **Hallucination**을 이해할 수 있기 때문이다.
 
@@ -345,7 +348,7 @@ LLM은 매 순간 다음 Token 후보들의 확률을 계산하고 그중 하나
 | Max Tokens | 생성 가능한 최대 길이 |
 | System Prompt | 역할·말투·제약·기본 지시 설정 |
 
-따라서 같은 질문이라도 Sampling 설정에 따라 결과가 달라질 수 있다. 발표 자료에서는 요약·분류처럼 일관성이 중요한 작업은 낮은 Temperature를 사용하는 방향으로 설명한다. fileciteturn38file0L649-L668
+따라서 같은 질문이라도 Sampling 설정에 따라 결과가 달라질 수 있다. 발표 자료에서는 요약·분류처럼 일관성이 중요한 작업은 낮은 Temperature를 사용하는 방향으로 설명한다.
 
 EDA Agent에서도 이 부분은 중요하다.
 
@@ -379,7 +382,7 @@ LLM이 한 번에 처리할 수 있는 정보의 양에는 한계가 있다.
 
 - 긴 Context는 비용과 속도에 영향을 준다.
 - 긴 문서를 통째로 넣는 것보다 필요한 부분만 넣는 것이 유리하다.
-- 대화가 길어지면 초반 지시가 희석될 수 있으므로 중요한 지시는 다시 명시할 필요가 있다. fileciteturn38file0L680-L700
+- 대화가 길어지면 초반 지시가 희석될 수 있으므로 중요한 지시는 다시 명시할 필요가 있다.
 
 이것은 EDA Agent 설계에서 매우 중요하다.
 
@@ -405,7 +408,7 @@ Hallucination은 LLM의 대표적인 한계다.
 
 ### 원인 3. 출처 없는 생성
 
-모델이 답변을 생성한다고 해서 그 답변에 실제 근거 문서가 자동으로 연결되는 것은 아니다. fileciteturn38file0L713-L736
+모델이 답변을 생성한다고 해서 그 답변에 실제 근거 문서가 자동으로 연결되는 것은 아니다.
 
 그래서 실무에서는 중요한 질문이 생긴다.
 
@@ -451,7 +454,7 @@ Hallucination은 LLM의 대표적인 한계다.
 
 와 같이 구체적으로 정의하는 것이 좋다.
 
-Prompt Engineering은 문서 요약, 분류, 지정된 형식으로의 변환 등 다양한 작업에 빠르게 적용할 수 있지만, **모델이 모르는 사실 자체를 새롭게 만들어 주지는 않는다.** fileciteturn38file0L748-L768
+Prompt Engineering은 문서 요약, 분류, 지정된 형식으로의 변환 등 다양한 작업에 빠르게 적용할 수 있지만, **모델이 모르는 사실 자체를 새롭게 만들어 주지는 않는다.**
 
 ---
 
@@ -477,7 +480,7 @@ Answer + Source
 
 사내 문서나 최신 자료를 Embedding하여 Vector DB에 저장해두고, 질문과 의미가 가까운 문서 조각을 검색한다.
 
-그 결과를 LLM의 Context에 추가하면 모델이 해당 문서를 근거로 답변할 수 있다. 발표 자료에서는 이를 최신·보안 문서를 반영하고 Hallucination을 줄이는 대표적인 방법으로 설명한다. fileciteturn38file0L780-L810
+그 결과를 LLM의 Context에 추가하면 모델이 해당 문서를 근거로 답변할 수 있다. 발표 자료에서는 이를 최신·보안 문서를 반영하고 Hallucination을 줄이는 대표적인 방법으로 설명한다.
 
 ### Vector DB
 
@@ -490,7 +493,7 @@ Vector DB는 일반 DB와 검색 방식이 다르다.
 | 질의 | SQL | Similarity Search |
 | 목적 | 정확한 값 조회 | 관련 내용 탐색 |
 
-RAG의 품질은 LLM 자체뿐 아니라 **문서 Chunking, Embedding, Indexing, Retrieval 품질**에 크게 영향을 받는다. fileciteturn38file0L822-L873
+RAG의 품질은 LLM 자체뿐 아니라 **문서 Chunking, Embedding, Indexing, Retrieval 품질**에 크게 영향을 받는다.
 
 ---
 
@@ -510,7 +513,7 @@ Domain-specific Model
 
 즉, 외부 문서를 매번 검색해서 넣는 것이 아니라 **모델의 Weight 자체를 추가 학습**한다.
 
-발표 자료에서는 Fine-Tuning이 지식을 단순히 넣는 것보다 **특정 형식과 태도, 전문적인 응답 방식**을 학습시키는 데 강하다고 설명한다. LoRA와 같은 경량화 방법을 이용하면 학습 비용을 낮출 수 있다. fileciteturn38file0L885-L904
+발표 자료에서는 Fine-Tuning이 지식을 단순히 넣는 것보다 **특정 형식과 태도, 전문적인 응답 방식**을 학습시키는 데 강하다고 설명한다. LoRA와 같은 경량화 방법을 이용하면 학습 비용을 낮출 수 있다.
 
 따라서 다음과 같이 생각하면 이해하기 쉽다.
 
@@ -541,7 +544,7 @@ Fine-Tuning
 
 발표 자료가 제시하는 실무 원칙은 간단하다.
 
-> **Prompt로 먼저 검증하고, 근거가 필요하면 RAG를 얹고, 그래도 응답 형식이나 동작 특성이 충분하지 않다면 Fine-Tuning을 검토한다.** fileciteturn38file0L916-L951
+> **Prompt로 먼저 검증하고, 근거가 필요하면 RAG를 얹고, 그래도 응답 형식이나 동작 특성이 충분하지 않다면 Fine-Tuning을 검토한다.**
 
 ---
 
@@ -554,7 +557,7 @@ AI 서비스를 실제 시스템에 넣기 시작하면 정확도만큼 중요�
 1. 긴 Context
 2. 추론형 모델의 긴 생성 과정
 3. Agent의 반복적인 모델 호출
-4. 멀티모달 입력과 대형 모델 사용 fileciteturn38file0L1045-L1061
+4. 멀티모달 입력과 대형 모델 사용
 
 그리고 다음과 같은 최적화 방법을 제안한다.
 
@@ -565,7 +568,7 @@ AI 서비스를 실제 시스템에 넣기 시작하면 정확도만큼 중요�
 - 출력 길이 제한
 - Quantization / Distillation
 
-핵심 원칙은 **먼저 Token을 적게 사용하도록 Architecture를 설계한 다음, 더 저렴한 Infrastructure를 선택하는 것**이다. fileciteturn38file0L1062-L1081
+핵심 원칙은 **먼저 Token을 적게 사용하도록 Architecture를 설계한 다음, 더 저렴한 Infrastructure를 선택하는 것**이다.
 
 이 원칙은 EDA Agent에서도 그대로 적용된다.
 
@@ -589,7 +592,7 @@ KV Cache
 새 Token 생성 시 재사용
 ```
 
-발표 자료에서는 KV Cache가 긴 Context에서 GPU Memory 사용량의 중요한 요소가 되며, MQA/GQA, PagedAttention, Cache Quantization 등의 방법과 함께 고려할 수 있다고 설명한다. fileciteturn38file0L1093-L1117
+발표 자료에서는 KV Cache가 긴 Context에서 GPU Memory 사용량의 중요한 요소가 되며, MQA/GQA, PagedAttention, Cache Quantization 등의 방법과 함께 고려할 수 있다고 설명한다.
 
 LLM Serving의 Memory를 단순화하면 다음과 같이 볼 수 있다.
 
@@ -610,7 +613,7 @@ KV Cache ≈
 × Precision × Concurrent Requests
 ```
 
-따라서 **모델이 GPU에 올라간다고 끝나는 것이 아니라, 남은 Memory가 Context와 동시 요청을 얼마나 수용할 수 있는지를 결정한다.** fileciteturn38file0L1129-L1155
+따라서 **모델이 GPU에 올라간다고 끝나는 것이 아니라, 남은 Memory가 Context와 동시 요청을 얼마나 수용할 수 있는지를 결정한다.**
 
 ---
 
@@ -660,7 +663,7 @@ LLM을 실제 서비스에 적용하면 "어떤 모델을 사용할까?"라는 �
 - **Latency** — 응답 시간
 - **Cost** — Token 및 운영 비용
 
-이 세 가지를 함께 관리해야 실제 AI 시스템이 된다. fileciteturn38file0L1167-L1208
+이 세 가지를 함께 관리해야 실제 AI 시스템이 된다.
 
 ---
 
@@ -839,7 +842,7 @@ EDA Agent
 
 발표 자료의 결론처럼 중요한 것은 단순히 "AI를 잘 사용하는 것"이 아니다.
 
-> **원리를 이해하면 질문이 달라지고, 질문이 달라지면 결과가 달라진다.** fileciteturn38file0L1017-L1037
+> **원리를 이해하면 질문이 달라지고, 질문이 달라지면 결과가 달라진다.**
 
 그리고 EDA Agent를 만들 때는 한 단계 더 나아가야 한다.
 
@@ -851,5 +854,5 @@ EDA Agent
 
 ## 참고 자료
 
-- 발표 자료: *LLM 신경망(Neural Network) 학습부터 추론 원리, 그리고 실무 적용 솔루션* fileciteturn38file0L28-L32
-- Vaswani et al., *Attention Is All You Need* — Transformer와 Self-Attention의 출발점으로 발표 자료에서 소개됨. fileciteturn38file0L348-L379
+- 발표 자료: *LLM 신경망(Neural Network) 학습부터 추론 원리, 그리고 실무 적용 솔루션*
+- Vaswani et al., *Attention Is All You Need* — Transformer와 Self-Attention의 출발점으로 발표 자료에서 소개됨.
