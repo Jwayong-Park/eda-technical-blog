@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
+<title id="title">LLM training loop</title><desc id="desc">Prediction, loss, backpropagation and weight update repeated as a training loop.</desc>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#52677b"/></marker><style>.h{font:700 23px sans-serif;fill:#172033}.t{font:700 16px sans-serif;fill:#24415b}.s{font:500 12px sans-serif;fill:#637489}.b{stroke:#d8e2eb;stroke-width:1.5}.a{stroke:#52677b;stroke-width:2;fill:none;marker-end:url(#a)}</style></defs>
+<rect x="10" y="10" width="980" height="280" rx="20" fill="#fbfdff" stroke="#dce6ef"/><text x="40" y="48" class="h">학습의 원리 한눈에 보기</text>
+<rect x="40" y="85" width="185" height="95" rx="13" fill="#eef8f0" class="b"/><text x="132" y="120" text-anchor="middle" class="t">STEP 1</text><text x="132" y="143" text-anchor="middle" class="t">예측</text><text x="132" y="165" text-anchor="middle" class="s">현재 가중치로 다음 값을 예측</text>
+<rect x="270" y="85" width="185" height="95" rx="13" fill="#edf5ff" class="b"/><text x="362" y="120" text-anchor="middle" class="t">STEP 2</text><text x="362" y="143" text-anchor="middle" class="t">비교 (Loss)</text><text x="362" y="165" text-anchor="middle" class="s">정답과 예측의 차이를 계산</text>
+<rect x="500" y="85" width="185" height="95" rx="13" fill="#fff7e8" class="b"/><text x="592" y="120" text-anchor="middle" class="t">STEP 3</text><text x="592" y="143" text-anchor="middle" class="t">수정</text><text x="592" y="165" text-anchor="middle" class="s">Backpropagation으로 Gradient 계산</text>
+<rect x="730" y="85" width="185" height="95" rx="13" fill="#f5efff" class="b"/><text x="822" y="120" text-anchor="middle" class="t">STEP 4</text><text x="822" y="143" text-anchor="middle" class="t">반복</text><text x="822" y="165" text-anchor="middle" class="s">Weight를 업데이트하고 다시 예측</text>
+<path d="M225 132H265M455 132H495M685 132H725M822 180C822 235 132 235 132 180" class="a"/>
+<text x="500" y="265" text-anchor="middle" class="s">Gradient Descent: Loss가 줄어드는 방향으로 Weight를 반복 수정한다.</text>
+</svg>
