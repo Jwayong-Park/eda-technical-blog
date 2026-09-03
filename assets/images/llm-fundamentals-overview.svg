@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">LLM Fundamentals for EDA Agent</title>
+  <desc id="desc">AI, Machine Learning, Deep Learning and LLM hierarchy, neural network, training loop, and connection to EDA Agent.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#eef5fb"/></linearGradient>
+    <linearGradient id="ai" x1="0" x2="1"><stop offset="0" stop-color="#eaf4ff"/><stop offset="1" stop-color="#dbeeff"/></linearGradient>
+    <linearGradient id="ml" x1="0" x2="1"><stop offset="0" stop-color="#eef9f0"/><stop offset="1" stop-color="#e0f4e5"/></linearGradient>
+    <linearGradient id="dl" x1="0" x2="1"><stop offset="0" stop-color="#fff7e7"/><stop offset="1" stop-color="#fff0ce"/></linearGradient>
+    <linearGradient id="llm" x1="0" x2="1"><stop offset="0" stop-color="#fff0f0"/><stop offset="1" stop-color="#ffe0e0"/></linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#53657a"/></marker>
+    <style>
+      .title{font:700 26px sans-serif;fill:#152235}.label{font:700 20px sans-serif;fill:#162337}.small{font:500 14px sans-serif;fill:#53657a}.tiny{font:500 12px sans-serif;fill:#5f6f80}.box{stroke:#cbd7e5;stroke-width:1.5}.line{stroke:#7a8999;stroke-width:1.3;fill:none}.flow{stroke:#53657a;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect x="10" y="10" width="1180" height="660" rx="24" fill="url(#bg)" stroke="#d6e1ed"/>
+  <text x="50" y="55" class="title">LLM Fundamentals → AI Agent → EDA Agent</text>
+  <text x="50" y="80" class="small">A web-native overview of the concepts that should come before EDA Agent architecture.</text>
+
+  <!-- hierarchy -->
+  <g transform="translate(45,110)">
+    <ellipse cx="245" cy="220" rx="230" ry="185" fill="url(#ai)" stroke="#70a9e5" stroke-width="2"/>
+    <ellipse cx="245" cy="225" rx="190" ry="150" fill="url(#ml)" stroke="#73b985" stroke-width="2"/>
+    <ellipse cx="245" cy="230" rx="145" ry="112" fill="url(#dl)" stroke="#e2ae52" stroke-width="2"/>
+    <ellipse cx="245" cy="235" rx="100" ry="72" fill="url(#llm)" stroke="#dc7777" stroke-width="2"/>
+    <text x="245" y="82" text-anchor="middle" class="label">Artificial Intelligence (AI)</text>
+    <text x="245" y="105" text-anchor="middle" class="tiny">지적 작업을 기계가 수행하도록 하는 가장 넓은 개념</text>
+    <text x="245" y="152" text-anchor="middle" class="label">Machine Learning (ML)</text>
+    <text x="245" y="174" text-anchor="middle" class="tiny">데이터에서 규칙과 패턴을 학습</text>
+    <text x="245" y="210" text-anchor="middle" class="label">Deep Learning (DL)</text>
+    <text x="245" y="232" text-anchor="middle" class="tiny">여러 층의 Neural Network로 복잡한 패턴 학습</text>
+    <text x="245" y="260" text-anchor="middle" class="label">Large Language Model</text>
+    <text x="245" y="281" text-anchor="middle" class="tiny">대규모 텍스트에서 다음 Token을 예측</text>
+    <text x="245" y="338" text-anchor="middle" class="small">AI ⊃ ML ⊃ DL ⊃ LLM</text>
+  </g>
+
+  <!-- neural network -->
+  <g transform="translate(520,120)">
+    <text x="0" y="0" class="label">Neural Network</text>
+    <text x="0" y="24" class="small">Input × Weight → Hidden → Output</text>
+    <rect x="0" y="45" width="270" height="205" rx="16" fill="#fff" class="box"/>
+    <g class="line">
+      <path d="M42 92 L128 80 M42 92 L128 145 M42 145 L128 80 M42 145 L128 145 M42 198 L128 145 M42 198 L128 210"/>
+      <path d="M128 80 L215 92 M128 80 L215 145 M128 145 L215 92 M128 145 L215 145 M128 210 L215 145 M128 210 L215 198"/>
+    </g>
+    <g fill="#fff" stroke="#4d7aa5" stroke-width="2">
+      <circle cx="42" cy="92" r="15"/><circle cx="42" cy="145" r="15"/><circle cx="42" cy="198" r="15"/>
+      <circle cx="128" cy="80" r="15"/><circle cx="128" cy="145" r="15"/><circle cx="128" cy="210" r="15"/>
+      <circle cx="215" cy="92" r="15"/><circle cx="215" cy="145" r="15"/><circle cx="215" cy="198" r="15"/>
+    </g>
+    <text x="42" y="238" text-anchor="middle" class="tiny">Input</text><text x="128" y="238" text-anchor="middle" class="tiny">Hidden</text><text x="215" y="238" text-anchor="middle" class="tiny">Output</text>
+    <text x="0" y="282" class="small">학습의 핵심은 연결 Weight를 반복적으로 조정하는 것</text>
+  </g>
+
+  <!-- training -->
+  <g transform="translate(520,445)">
+    <text x="0" y="0" class="label">Training Loop</text>
+    <rect x="0" y="20" width="120" height="58" rx="12" fill="#eaf4ff" class="box"/><text x="60" y="45" text-anchor="middle" class="small">Prediction</text><text x="60" y="64" text-anchor="middle" class="tiny">예측</text>
+    <rect x="150" y="20" width="120" height="58" rx="12" fill="#fff7e7" class="box"/><text x="210" y="45" text-anchor="middle" class="small">Loss</text><text x="210" y="64" text-anchor="middle" class="tiny">정답과 비교</text>
+    <rect x="300" y="20" width="150" height="58" rx="12" fill="#eef9f0" class="box"/><text x="375" y="45" text-anchor="middle" class="small">Backpropagation</text><text x="375" y="64" text-anchor="middle" class="tiny">Gradient 계산</text>
+    <rect x="480" y="20" width="120" height="58" rx="12" fill="#fff0f0" class="box"/><text x="540" y="45" text-anchor="middle" class="small">Weight Update</text><text x="540" y="64" text-anchor="middle" class="tiny">가중치 수정</text>
+    <path d="M120 49 H145 M270 49 H295 M450 49 H475" class="flow"/>
+    <path d="M540 80 C540 118 40 118 40 80" class="flow"/>
+    <text x="300" y="108" text-anchor="middle" class="tiny">반복하면서 Loss를 줄이는 방향으로 학습</text>
+  </g>
+
+  <!-- bridge to EDA agent -->
+  <g transform="translate(840,120)">
+    <text x="0" y="0" class="label">From LLM to EDA Agent</text>
+    <rect x="0" y="28" width="300" height="315" rx="18" fill="#fff" class="box"/>
+    <g transform="translate(25,55)">
+      <rect width="250" height="48" rx="10" fill="#eef5ff" class="box"/><text x="125" y="30" text-anchor="middle" class="small">LLM</text>
+      <path d="M125 48 V68" class="flow"/>
+      <rect y="68" width="250" height="48" rx="10" fill="#f4f0ff" class="box"/><text x="125" y="98" text-anchor="middle" class="small">Prompt / Context</text>
+      <path d="M125 116 V136" class="flow"/>
+      <rect y="136" width="250" height="48" rx="10" fill="#eef9f0" class="box"/><text x="125" y="166" text-anchor="middle" class="small">RAG / Knowledge</text>
+      <path d="M125 184 V204" class="flow"/>
+      <rect y="204" width="250" height="48" rx="10" fill="#fff7e7" class="box"/><text x="125" y="234" text-anchor="middle" class="small">Tool Calling / Workflow</text>
+    </g>
+    <rect x="25" y="285" width="250" height="42" rx="10" fill="#e8f7f2" stroke="#72b69f"/><text x="150" y="311" text-anchor="middle" class="small">EDA Agent</text>
+  </g>
+
+  <path d="M790 310 H835" class="flow"/>
+  <text x="812" y="298" text-anchor="middle" class="tiny">확장</text>
+  <text x="50" y="645" class="tiny">Key idea: EDA Agent = LLM + EDA Data/Knowledge + Tool Calling + Workflow + Verification</text>
+</svg>
