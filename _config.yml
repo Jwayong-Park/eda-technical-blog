@@ -5,6 +5,7 @@ baseurl: "/eda-technical-blog"
 lang: ko-KR
 markdown: kramdown
 permalink: /posts/:title.html
+author: "Jwayong Park"
 exclude:
   - README.md
   - Gemfile
