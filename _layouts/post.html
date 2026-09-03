@@ -23,6 +23,13 @@ layout: default
     </div>
     {% endif %}
 
+    {% if page.permalink == '/posts/llm-fundamentals-for-eda-agent.html' %}
+    <figure class="article-figure article-figure-overview">
+      <img src="{{ '/assets/images/llm-fundamentals-overview.svg' | relative_url }}" alt="LLM Fundamentals에서 AI Agent와 EDA Agent로 확장되는 개념 구조도" loading="lazy">
+      <figcaption>Figure 1. LLM의 기본 원리에서 AI Agent, EDA Agent로 이어지는 개념적 연결</figcaption>
+    </figure>
+    {% endif %}
+
     <aside class="toc" aria-label="Table of contents">
       <div class="toc-title">Table of Contents</div>
       <nav id="toc-list"></nav>
