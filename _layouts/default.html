@@ -11,17 +11,23 @@
   <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta name="theme-color" content="#071523">
   <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
 </head>
 <body>
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="{{ '/' | relative_url }}">Jwayong EDA Lab</a>
-    <nav>
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Jwayong EDA Lab home">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span class="brand-copy"><strong>JWAYONG</strong><em>EDA LAB</em></span>
+    </a>
+    <span class="brand-tagline">Semiconductor · EDA · Timing · AI</span>
+    <nav aria-label="Primary navigation">
       <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/categories.html' | relative_url }}">Categories</a>
+      <a href="{{ '/categories.html' | relative_url }}">Categories⌄</a>
       <a href="{{ '/tags.html' | relative_url }}">Tags</a>
-      <a href="{{ '/search.html' | relative_url }}">Search</a>
+      <a href="{{ '/search.html' | relative_url }}">⌕&nbsp; Search</a>
+      <a href="{{ '/about.html' | relative_url }}">About</a>
     </nav>
   </div>
 </header>
@@ -29,7 +35,10 @@
 {{ content }}
 
 <footer>
-  <div class="container">Jwayong EDA Lab · Semiconductor Design & AI Engineering</div>
+  <div class="container footer-inner">
+    <strong>Jwayong EDA Lab</strong>
+    <span>Semiconductor Design · EDA · Timing · Logic Implementation · AI Engineering</span>
+  </div>
 </footer>
 </body>
 </html>
