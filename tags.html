@@ -1,0 +1,39 @@
+---
+layout: default
+title: "Tags"
+description: "Browse Jwayong EDA Lab articles by tag."
+---
+
+<main class="container page">
+  <header class="page-header">
+    <p class="eyebrow">TOPICS</p>
+    <h1>Tags</h1>
+    <p>Find articles by specific technologies, tools and concepts.</p>
+  </header>
+
+  <div class="tag-cloud">
+    {% for tag in site.tags %}
+      <a href="#{{ tag[0] | slugify }}" class="tag-pill large">#{{ tag[0] }} <span>{{ tag[1].size }}</span></a>
+    {% endfor %}
+  </div>
+
+  <div class="taxonomy-list">
+    {% for tag in site.tags %}
+    <section class="taxonomy-section" id="{{ tag[0] | slugify }}">
+      <div class="taxonomy-heading">
+        <h2>#{{ tag[0] }}</h2>
+        <span>{{ tag[1].size }} article{% if tag[1].size != 1 %}s{% endif %}</span>
+      </div>
+      <div class="article-list">
+        {% for post in tag[1] %}
+        <article class="article-card compact">
+          <h3><a class="article-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
+          <p>{{ post.description }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+</main>
