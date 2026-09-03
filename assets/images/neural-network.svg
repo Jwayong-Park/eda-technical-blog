@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="title desc">
+<title id="title">Neural network structure</title><desc id="desc">Input, hidden and output layers connected by weighted edges.</desc>
+<defs><style>.h{font:700 24px sans-serif;fill:#172033}.l{font:700 17px sans-serif;fill:#397ab0}.n{font:500 13px sans-serif;fill:#52637a}.edge{stroke:#91a2b3;stroke-width:1.6}.node{fill:#fff;stroke:#5685ad;stroke-width:2}</style></defs>
+<rect x="10" y="10" width="980" height="480" rx="22" fill="#fbfdff" stroke="#dce6ef"/>
+<text x="50" y="55" class="h">Neural Network</text><text x="50" y="80" class="n">입력에 Weight를 곱해 계산하고, 여러 Hidden Layer를 거쳐 Output을 만든다.</text>
+<rect x="50" y="105" width="190" height="300" rx="16" fill="#eef9f0" stroke="#cde5d2"/><rect x="300" y="105" width="190" height="300" rx="16" fill="#edf5ff" stroke="#cfe0f2"/><rect x="550" y="105" width="190" height="300" rx="16" fill="#f4f0ff" stroke="#ded6f1"/><rect x="800" y="105" width="150" height="300" rx="16" fill="#fff7e8" stroke="#eeddbb"/>
+<text x="145" y="132" text-anchor="middle" class="l">입력층 (Input)</text><text x="395" y="132" text-anchor="middle" class="l">은닉층 (Hidden)</text><text x="645" y="132" text-anchor="middle" class="l">은닉층 (Hidden)</text><text x="875" y="132" text-anchor="middle" class="l">출력층 (Output)</text>
+<g class="edge">
+<path d="M145 175 L395 155 M145 175 L395 235 M145 175 L395 315 M145 245 L395 155 M145 245 L395 235 M145 245 L395 315 M145 315 L395 155 M145 315 L395 235 M145 315 L395 315"/>
+<path d="M395 155 L645 175 M395 155 L645 255 M395 235 L645 175 M395 235 L645 255 M395 315 L645 255 M395 315 L645 335"/>
+<path d="M645 175 L875 205 M645 255 L875 205 M645 255 L875 305 M645 335 L875 305"/>
+</g>
+<g class="node"><circle cx="145" cy="175" r="23"/><circle cx="145" cy="245" r="23"/><circle cx="145" cy="315" r="23"/><circle cx="395" cy="155" r="23"/><circle cx="395" cy="235" r="23"/><circle cx="395" cy="315" r="23"/><circle cx="645" cy="175" r="23"/><circle cx="645" cy="255" r="23"/><circle cx="645" cy="335" r="23"/><circle cx="875" cy="205" r="23"/><circle cx="875" cy="305" r="23"/></g>
+<g class="n"><text x="145" y="179" text-anchor="middle">x₁</text><text x="145" y="249" text-anchor="middle">x₂</text><text x="145" y="319" text-anchor="middle">xₙ</text><text x="875" y="209" text-anchor="middle">y₁</text><text x="875" y="309" text-anchor="middle">yₘ</text></g>
+<text x="500" y="445" text-anchor="middle" class="n">핵심: 각 연결의 Weight가 학습 과정에서 조정된다.</text>
+</svg>
