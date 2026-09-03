@@ -11,14 +11,33 @@ layout: default
   </div>
 </header>
 
-<main class="container article">
-  <div class="article-header">
-    {% if page.tags %}<p class="tag">{{ page.tags | join: ' · ' | upcase }}</p>{% endif %}
-    <p class="post-meta">{{ page.date | date: "%Y-%m-%d" }}</p>
-  </div>
-
+<main class="container article-layout">
   <article class="article-body">
-    {{ content }}
-    <p><a class="button" href="{{ '/' | relative_url }}">← Back to EDA Lab</a></p>
+    <div class="article-meta">
+      <span>{{ page.date | date: "%Y-%m-%d" }}</span>
+      {% if page.category %}<a href="{{ '/categories.html' | relative_url }}#{{ page.category | slugify }}">{{ page.category }}</a>{% endif %}
+    </div>
+    {% if page.tags %}
+    <div class="tag-list">
+      {% for tag in page.tags %}<a class="tag-pill" href="{{ '/tags.html' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}
+    </div>
+    {% endif %}
+
+    <aside class="toc" aria-label="Table of contents">
+      <div class="toc-title">Table of Contents</div>
+      <nav id="toc-list"></nav>
+    </aside>
+
+    <div id="article-content">
+      {{ content }}
+    </div>
+
+    <div class="article-nav">
+      {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% endif %}
+      <a href="{{ '/' | relative_url }}">Back to EDA Lab</a>
+      {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}
+    </div>
   </article>
 </main>
+
+<script src="{{ '/assets/js/blog.js' | relative_url }}" defer></script>
