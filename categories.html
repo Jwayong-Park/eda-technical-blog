@@ -1,0 +1,33 @@
+---
+layout: default
+title: "Categories"
+description: "Browse Jwayong EDA Lab articles by category."
+---
+
+<main class="container page">
+  <header class="page-header">
+    <p class="eyebrow">KNOWLEDGE AREAS</p>
+    <h1>Categories</h1>
+    <p>EDA Engineering knowledge organized by topic.</p>
+  </header>
+
+  <div class="taxonomy-list">
+    {% for category in site.categories %}
+    <section class="taxonomy-section" id="{{ category[0] | slugify }}">
+      <div class="taxonomy-heading">
+        <h2>{{ category[0] }}</h2>
+        <span>{{ category[1].size }} article{% if category[1].size != 1 %}s{% endif %}</span>
+      </div>
+      <div class="article-list">
+        {% for post in category[1] %}
+        <article class="article-card compact">
+          <h3><a class="article-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
+          <p>{{ post.description }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+</main>
