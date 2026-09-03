@@ -84,12 +84,17 @@ function enhanceArticleVisuals() {
   ];
   figures.forEach(([prefix, src, caption]) => {
     const heading = find(prefix);
-    if (!heading || content.querySelector(`img[src*="${src.split('/').pop()}"]`)) return;
+    const filename = src.split('/').pop();
+    if (!heading || content.querySelector(`img[src*="${filename}"]`)) return;
     const figure = document.createElement('figure');
     figure.className = 'article-figure';
-    figure.innerHTML = `<img src="${document.querySelector('base')?.href || ''}${src}" alt="${caption}" loading="lazy"><figcaption>${caption}</figcaption>`;
-    const absoluteSrc = `${window.location.origin}${window.location.pathname.split('/posts/')[0]}${src}`;
-    figure.querySelector('img').src = absoluteSrc;
+    const image = document.createElement('img');
+    image.src = `${window.location.origin}${window.location.pathname.split('/posts/')[0]}${src}`;
+    image.alt = caption;
+    image.loading = 'lazy';
+    const figcaption = document.createElement('figcaption');
+    figcaption.textContent = caption;
+    figure.append(image, figcaption);
     insertBeforeFirstPre(heading, figure);
   });
 }
@@ -122,7 +127,6 @@ async function initSearch() {
       const query = input.value.trim().toLowerCase();
       if (!query) { status.textContent = `${articles.length} articles available. Enter a keyword to search.`; results.innerHTML = ''; return; }
       const terms = query.split(/\s+/).filter(Boolean);
-      const matches = articles.filter(article => [article.title, article.description, article.category, ...(article.tags || []), article.content].join(' ').toLowerCase()).every;
       const filtered = articles.filter(article => {
         const haystack = [article.title, article.description, article.category, ...(article.tags || []), article.content].join(' ').toLowerCase();
         return terms.every(term => haystack.includes(term));
