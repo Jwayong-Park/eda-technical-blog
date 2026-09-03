@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   buildTOC();
   initSearch();
+  initShare();
 });
 
 function slugify(text) {
@@ -17,22 +18,49 @@ function buildTOC() {
 
   const headings = content.querySelectorAll('h2, h3');
   if (!headings.length) {
-    toc.closest('.toc')?.remove();
+    toc.closest('.toc-card')?.remove();
     return;
   }
 
   const list = document.createElement('ul');
+  let sectionNumber = 0;
+  let subNumber = 0;
+
   headings.forEach((heading, index) => {
     if (!heading.id) heading.id = `${slugify(heading.textContent)}-${index + 1}`;
     const item = document.createElement('li');
-    if (heading.tagName === 'H3') item.className = 'toc-sub';
+    if (heading.tagName === 'H3') {
+      item.className = 'toc-sub';
+      subNumber += 1;
+    } else {
+      sectionNumber += 1;
+      subNumber = 0;
+    }
     const link = document.createElement('a');
+    const number = heading.tagName === 'H3'
+      ? `${String(sectionNumber).padStart(2, '0')}.${subNumber}`
+      : `${String(sectionNumber).padStart(2, '0')}.`;
     link.href = `#${heading.id}`;
-    link.textContent = heading.textContent;
+    link.innerHTML = `<span class="toc-number">${number}</span>${escapeHtml(heading.textContent)}`;
     item.appendChild(link);
     list.appendChild(item);
   });
   toc.appendChild(list);
+}
+
+function initShare() {
+  const button = document.getElementById('copy-link');
+  if (!button) return;
+  button.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      const original = button.textContent;
+      button.textContent = '✓';
+      setTimeout(() => { button.textContent = original; }, 1400);
+    } catch (error) {
+      window.prompt('Copy this article URL:', window.location.href);
+    }
+  });
 }
 
 async function initSearch() {
@@ -68,7 +96,7 @@ async function initSearch() {
           <h3><a class="article-link" href="${article.url}">${escapeHtml(article.title)}</a></h3>
           <p class="post-meta">${escapeHtml(article.date)}</p>
           <p>${escapeHtml(article.description || '')}</p>
-          <div class="tag-list">${(article.tags || []).map(tag => `<span class="tag-pill">#${escapeHtml(tag)}</span>`).join('')}</div>
+          <div class="tag-list">${(article.tags || []).map(tag => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join('')}</div>
           <a class="text-link" href="${article.url}">Read article →</a>
         </article>
       `).join('');
