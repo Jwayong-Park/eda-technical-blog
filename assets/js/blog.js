@@ -23,7 +23,8 @@ function buildTOC() {
   let sectionNumber = 0;
   let subNumber = 0;
   headings.forEach((heading, index) => {
-    if (!heading.id) heading.id = `${slugify(heading.textContent)}-${index + 1}`;
+    const displayText = heading.textContent.replace(/^\d+(?:\.\d+)*\s*/, '').trim();
+    if (!heading.id) heading.id = `${slugify(displayText)}-${index + 1}`;
     const item = document.createElement('li');
     if (heading.tagName === 'H3') {
       item.className = 'toc-sub';
@@ -37,7 +38,7 @@ function buildTOC() {
       ? `${String(sectionNumber).padStart(2, '0')}.${subNumber}`
       : `${String(sectionNumber).padStart(2, '0')}.`;
     link.href = `#${heading.id}`;
-    link.innerHTML = `<span class="toc-number">${number}</span>${escapeHtml(heading.textContent)}`;
+    link.innerHTML = `<span class="toc-number">${number}</span>${escapeHtml(displayText)}`;
     item.appendChild(link);
     list.appendChild(item);
   });
