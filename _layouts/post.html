@@ -2,42 +2,104 @@
 layout: default
 ---
 
-<header class="hero article-hero">
+<main class="article-shell">
   <div class="container">
-    <p class="eyebrow">{{ page.category | default: 'EDA TECHNICAL BLOG' | upcase }}</p>
-    <h1>{{ page.title }}</h1>
-    {% if page.subtitle %}<p class="lead">{{ page.subtitle }}</p>{% endif %}
-    {% if page.description %}<p class="hero-copy">{{ page.description }}</p>{% endif %}
-  </div>
-</header>
-
-<main class="container article-layout">
-  <article class="article-body">
-    <div class="article-meta">
-      <span>{{ page.date | date: "%Y-%m-%d" }}</span>
+    <div class="breadcrumbs">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <span>›</span>
       {% if page.category %}<a href="{{ '/categories.html' | relative_url }}#{{ page.category | slugify }}">{{ page.category }}</a>{% endif %}
-    </div>
-    {% if page.tags %}
-    <div class="tag-list">
-      {% for tag in page.tags %}<a class="tag-pill" href="{{ '/tags.html' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}
-    </div>
-    {% endif %}
-
-    <aside class="toc" aria-label="Table of contents">
-      <div class="toc-title">Table of Contents</div>
-      <nav id="toc-list"></nav>
-    </aside>
-
-    <div id="article-content">
-      {{ content }}
+      <span>›</span>
+      <span>{{ page.title }}</span>
     </div>
 
-    <div class="article-nav">
-      {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% endif %}
-      <a href="{{ '/' | relative_url }}">Back to EDA Lab</a>
-      {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}
+    <div class="article-grid">
+      <article class="article-body">
+        <header class="article-header">
+          <p class="article-kicker">{{ page.category | default: 'EDA TECHNICAL BLOG' | upcase }}</p>
+          <h1>{{ page.title }}</h1>
+          {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle }}</p>{% endif %}
+
+          {% if page.tags %}
+          <div class="tag-list article-tags">
+            {% for tag in page.tags %}<a class="tag-pill" href="{{ '/tags.html' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="article-meta">
+            <span>♙&nbsp; {{ page.author | default: site.author | default: 'Jwayong Park' }}</span>
+            <span>▣&nbsp; {{ page.date | date: "%b %-d, %Y" }}</span>
+            {% assign word_count = content | number_of_words %}
+            {% assign read_minutes = word_count | divided_by: 180 %}
+            {% if read_minutes < 1 %}{% assign read_minutes = 1 %}{% endif %}
+            <span>◷&nbsp; {{ page.read_time | default: read_minutes }} min read</span>
+          </div>
+        </header>
+
+        <div class="article-intro-box">
+          <span class="intro-icon">ⓘ</span>
+          <p>{{ page.description | default: site.description }}</p>
+        </div>
+
+        <div id="article-content">
+          {{ content }}
+        </div>
+
+        <div class="article-nav">
+          {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% endif %}
+          <a href="{{ '/' | relative_url }}">Back to EDA Lab</a>
+          {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}
+        </div>
+      </article>
+
+      <aside class="article-sidebar">
+        <section class="sidebar-card toc-card">
+          <h2>목차 <span>(Table of Contents)</span></h2>
+          <nav id="toc-list" aria-label="Table of contents"></nav>
+        </section>
+
+        {% if page.tags %}
+        <section class="sidebar-card">
+          <h2>이 글의 태그</h2>
+          <div class="sidebar-tags">
+            {% for tag in page.tags %}<a class="tag-pill" href="{{ '/tags.html' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% endfor %}
+          </div>
+        </section>
+        {% endif %}
+
+        {% if page.category %}
+        <section class="sidebar-card">
+          <h2>관련 카테고리</h2>
+          <a class="category-chip" href="{{ '/categories.html' | relative_url }}#{{ page.category | slugify }}">{{ page.category }}</a>
+        </section>
+        {% endif %}
+
+        <section class="sidebar-card recent-card">
+          <h2>최근 글</h2>
+          <div class="recent-list">
+            {% assign recent_count = 0 %}
+            {% for post in site.posts %}
+              {% if post.url != page.url and recent_count < 5 %}
+              <a class="recent-item" href="{{ post.url | relative_url }}">
+                <span class="recent-thumb" aria-hidden="true">{{ post.category | slice: 0, 2 | upcase }}</span>
+                <span><strong>{{ post.title }}</strong><small>{{ post.category }}</small></span>
+              </a>
+              {% assign recent_count = recent_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="sidebar-card share-card">
+          <h2>공유하기</h2>
+          <div class="share-actions">
+            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on X">𝕏</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">in</a>
+            <button type="button" id="copy-link" aria-label="Copy article link">↗</button>
+          </div>
+        </section>
+      </aside>
     </div>
-  </article>
+  </div>
 </main>
 
 <script src="{{ '/assets/js/blog.js' | relative_url }}" defer></script>
